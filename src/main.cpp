@@ -1,8 +1,4 @@
-//---------------------------------------------------------------------------
 
-#pragma hdrstop
-
-//---------------------------------------------------------------------------
 /*
 *  Generate a precision/recall graphic script
 *  argv[1] = input filename
@@ -18,33 +14,26 @@
 *  fist atribute index = 1
 **/
 
-#include <string.h>
 #include "Reader.h"
 #include "Discret.h"
 #include "Reader.cpp"
 #include "Discret.cpp"
 
-/*THE INDEX OF THE FIRST ATTRIBUTE IS ONE*/
+int main(int argc, char *argv[]) {
+    char *filename = argv[1];
+    int binsize = atoi(argv[2]);
+    float incratetofuse = atof(argv[3]);
+    int nbrcats = atoi(argv[4]);
+    float incratetoselect = atof(argv[5]);
+    Reader *reader = new Reader(filename);
 
+    printf("\nChecking if the database is read correctly");
+    discretize(reader, binsize, incratetofuse, nbrcats, incratetoselect);
+    printf("\nProgram ended, press any key to continue...");
 
-int main(int argc, char * argv[]){
-       char * filename = argv[1];
-       int binsize= atoi(argv[2]);
-       float incratetofuse =  atof(argv[3]);
-       int nbrcats =  atoi(argv[4]);
-       float incratetoselect =  atof(argv[5]);
-       Reader * reader = new Reader(filename);
-      	//See if database was read correctly
-       printf("\nChecking if the database is read correctly");
-      /* reader->firstLine();
-       do{
-       	reader->show();
-       }while(reader->nextLine()!=-1);*/
+    reader->closef();
 
-       discretize(reader,binsize, incratetofuse,nbrcats,incratetoselect);
-       printf("\nProgram ended, press any key to continue...");
-       reader->closef();
-//       getch();
+    return 0;
 }
 
 
