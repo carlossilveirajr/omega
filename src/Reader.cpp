@@ -5,7 +5,7 @@
  *  @param str pointer to current line reader position
  *  @return current word and places the pointer (str) to next word
  **/
-char * getNextWord(char * &str) {
+static char * getNextWord(char * &str) {
 	char * begin = str;
 	while (*str != ' ' && *str != '\n' && *str != '\0')
 		str++;

@@ -26,7 +26,7 @@ int main(int argc, char *argv[]) {
 	discretize(&reader, binsize, incratetofuse, nbrcats, incratetoselect);
 	printf("\nProgram ended, press any key to continue...");
 
-	reader.closef();
+	reader.close();
 
 	return 0;
 }

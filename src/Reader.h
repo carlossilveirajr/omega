@@ -4,22 +4,10 @@
 #define ATRIBTAM 800
 #define LINETAM 8000
 
-#include<stdlib.h>
-#include<stdio.h>
-
-char * getNextWord(char * &str);
+#include <cstdlib>
+#include <cstdio>
 
 class Reader {
-private:
-	FILE * f;
-	int ctind; /*!<Index of the choosen categorical attribute. First atribute have index 0.*/
-	int qtind; /*!<Index of the choosen quantitative attribute. First atribute have index 1.*/
-	int nbrlines; /*!<Number of file transations.*/
-	int nbrattr; /*!<Number of features (attributes).*/
-	int actualline; /*!<Transaction actual*/
-	char * ctname; /*!<Name of the choosen categorical item*/
-	char * qtname; /*!<Name of the choosen quantitative item*/
-	char line[LINETAM];
 
 public:
 	/**
@@ -73,11 +61,22 @@ public:
 	 **/
 	void show();
 
-	void closef() {
+	void close() {
 		fclose(f);
 	}
 
 	int getIDValue();
+
+private:
+	FILE * f;
+	int ctind; /*!<Index of the choosen categorical attribute. First atribute have index 0.*/
+	int qtind; /*!<Index of the choosen quantitative attribute. First atribute have index 1.*/
+	int nbrlines; /*!<Number of file transations.*/
+	int nbrattr; /*!<Number of features (attributes).*/
+	int actualline; /*!<Transaction actual*/
+	char * ctname; /*!<Name of the choosen categorical item*/
+	char * qtname; /*!<Name of the choosen quantitative item*/
+	char line[LINETAM];
 };
 
 #endif
